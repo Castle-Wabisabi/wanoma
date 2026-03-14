@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Himeji Castle Town Machiya Inn 'Wabi-Sabi' - Wanoma. A tranquil 1st-floor room for 2 guests with a bold red fusuma painting, private Goemonburo iron bath, and serene atmosphere.">
+  <title>Wanoma | Wabi-Sabi Himeji</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS カスタムプロパティ
+    ============================================================ */
+    :root {
+      --bg:           #191815;
+      --bg-card:      #222118;
+      --bg-mid:       #1e1d1a;
+      --text-main:    #f0ece2;
+      --text-sub:     #a09880;
+      --text-muted:   #6a6050;
+      --accent-gold:  #c8a760;
+      --accent-red:   #b03018;
+      --border:       rgba(240, 236, 226, 0.08);
+      --border-gold:  rgba(200, 167, 96, 0.35);
+      --font-jp:      'Noto Serif JP', 'YuMincho', '游明朝', 'Hiragino Mincho Pro', serif;
+      --font-en:      'Cormorant Garamond', 'Georgia', serif;
+      --max-w:        1160px;
+      --header-h:     68px;
+    }
+
+    /* ============================================================
+       Reset
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-jp);
+      font-weight: 300;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       Noise Texture Overlay（Organic Minimalism）
+    ============================================================ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ============================================================
+       アニメーション
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .fade-up:nth-child(5) { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============================================================
+       共通ユーティリティ
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+    .section-label {
+      display: block;
+      font-family: var(--font-en);
+      font-size: 0.68rem;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      color: var(--accent-gold);
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+    .section-en {
+      font-family: var(--font-en);
+      font-style: italic;
+      font-size: clamp(0.88rem, 1.6vw, 1.1rem);
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+      margin-bottom: 52px;
+    }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent-gold);
+      margin: 24px 0;
+    }
+    .divider--center { margin: 24px auto; }
+
+    /* ============================================================
+       ボタン
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 48px;
+      font-family: var(--font-jp);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, background 0.22s, color 0.22s, border-color 0.22s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--primary {
+      background: var(--accent-gold);
+      color: var(--bg);
+    }
+    .btn--primary:hover { background: #d4b46e; }
+    .btn--outline {
+      background: transparent;
+      border: 1px solid var(--text-sub);
+      color: var(--text-sub);
+    }
+    .btn--outline:hover { border-color: var(--text-main); color: var(--text-main); }
+    .btn--large {
+      padding: 20px 64px;
+      font-size: 0.9rem;
+    }
+
+    /* ============================================================
+       LANGUAGE SWITCHER
+    ============================================================ */
+    .lang-switcher {
+      display: flex;
+      gap: 12px;
+      margin-right: 24px;
+      font-family: var(--font-en);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+    }
+    .lang-btn {
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .lang-btn:hover { color: var(--text-sub); }
+    .lang-btn.is-active {
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+    .lang-switcher .divider-s {
+      width: 1px;
+      height: 10px;
+      background: var(--border);
+      align-self: center;
+    }
+
+    /* Content Visibility */
+    body.lang-en .lang-ja { display: none !important; }
+    body.lang-ja .lang-en { display: none !important; }
+    
+    /* English Font Adjustment */
+    body.lang-en {
+      font-family: var(--font-en), var(--font-jp);
+      font-weight: 400;
+    }
+    body.lang-en .section-title {
+      font-style: italic;
+    }
+    body.lang-en .hero__title {
+      font-size: clamp(2.0rem, 5vw, 4.0rem);
+      line-height: 1.15;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 200;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.is-scrolled {
+      background: rgba(25, 24, 21, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+    .site-header__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 36px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-header__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-header__logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+    }
+    .site-header__logo-text {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      letter-spacing: 0.12em;
+      line-height: 1.5;
+    }
+    .site-header__logo-text strong {
+      display: block;
+      font-size: 1.0rem;
+      letter-spacing: 0.22em;
+      color: var(--text-main);
+      font-weight: 400;
+    }
+    .site-header__nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .site-header__nav a {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      color: var(--text-sub);
+      transition: color 0.2s;
+    }
+    .site-header__nav a:hover { color: var(--text-main); }
+    .site-header__cta {
+      display: inline-block;
+      padding: 9px 22px;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .site-header__cta:hover {
+      background: var(--accent-gold);
+      color: var(--bg);
+    }
+
+    /* ============================================================
+       HERO（Attention）
+    ============================================================ */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 580px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/wanoma-010.jpg');
+      background-size: cover;
+      background-position: center 28%;
+      transform: scale(1.06);
+      transition: transform 6s ease-out;
+    }
+    .hero__bg.is-loaded { transform: scale(1); }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(25, 24, 21, 0.97) 0%,
+        rgba(25, 24, 21, 0.55) 35%,
+        rgba(25, 24, 21, 0.18) 65%,
+        rgba(25, 24, 21, 0.38) 100%
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 36px 88px;
+    }
+    .hero__room-badge {
+      display: inline-block;
+      border: 1px solid rgba(200, 167, 96, 0.5);
+      padding: 6px 18px;
+      font-family: var(--font-en);
+      font-size: 0.7rem;
+      font-style: normal;
+      letter-spacing: 0.3em;
+      color: var(--accent-gold);
+      margin-bottom: 28px;
+    }
+    .hero__title {
+      font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+      font-weight: 200;
+      letter-spacing: 0.06em;
+      line-height: 1.22;
+      margin-bottom: 18px;
+    }
+    .hero__title-en {
+      font-family: var(--font-en);
+      font-style: italic;
+      font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+      font-weight: 300;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+      margin-bottom: 44px;
+    }
+    .hero__scroll {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-en);
+      font-size: 0.64rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+    }
+    .hero__scroll-line {
+      width: 44px;
+      height: 1px;
+      background: var(--text-muted);
+      animation: lineGrow 2.2s ease-in-out infinite;
+    }
+    @keyframes lineGrow {
+      0%,100% { width: 44px; opacity: 0.4; }
+      50%      { width: 68px; opacity: 1;   }
+    }
+
+    /* ============================================================
+       INTRO（Attention → Interest）
+    ============================================================ */
+    .intro {
+      padding: 120px 0;
+      text-align: center;
+    }
+    .intro__tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: 6px 22px;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--text-sub);
+      margin-bottom: 52px;
+    }
+    .intro__title {
+      font-size: clamp(1.9rem, 4vw, 3.1rem);
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .intro__title em {
+      font-style: normal;
+      color: var(--accent-gold);
+    }
+    .intro__title-en {
+      font-family: var(--font-en);
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.5rem);
+      font-weight: 300;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+      margin-bottom: 52px;
+    }
+    .intro__body {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 2.3;
+      letter-spacing: 0.08em;
+    }
+    .intro__body p + p { margin-top: 1.4em; }
+
+    /* ============================================================
+       FEATURES / Bento UI（Interest）
+    ============================================================ */
+    .features {
+      padding: 100px 0;
+      background: var(--bg-mid);
+    }
+    .features__header {
+      margin-bottom: 60px;
+    }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    /* カード基本 */
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .bento-card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-3px);
+    }
+    .bento-card--c7  { grid-column: span 7; }
+    .bento-card--c5  { grid-column: span 5; }
+    .bento-card--c4  { grid-column: span 4; }
+    .bento-card--c8  { grid-column: span 8; }
+
+    .bento-card__img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.82);
+      transition: filter 0.4s, transform 0.5s;
+    }
+    .bento-card:hover .bento-card__img {
+      filter: brightness(0.95);
+      transform: scale(1.02);
+    }
+    .bento-card__body {
+      padding: 28px 32px 36px;
+    }
+    .bento-card__num {
+      font-family: var(--font-en);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+    .bento-card__title {
+      font-size: 1.08rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .bento-card__desc {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.95;
+      letter-spacing: 0.06em;
+    }
+    /* コーヒーカード特殊 */
+    .bento-card--coffee {
+      background: linear-gradient(135deg, #221f14, #2a2518);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bento-card--coffee .bento-card__logo {
+      width: 110px;
+      margin-bottom: 22px;
+      filter: brightness(0.9);
+    }
+
+    /* ============================================================
+       GALLERY（Desire）
+    ============================================================ */
+    .gallery {
+      padding: 100px 0;
+      overflow: hidden;
+    }
+    .gallery__header {
+      padding: 0 36px;
+      max-width: var(--max-w);
+      margin: 0 auto 44px;
+    }
+    .gallery__track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 36px;
+      padding: 0 36px;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .gallery__track::-webkit-scrollbar { display: none; }
+    .gallery__track:active { cursor: grabbing; }
+    .gallery__item {
+      flex: 0 0 auto;
+      width: clamp(260px, 36vw, 480px);
+      scroll-snap-align: start;
+    }
+    .gallery__item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: brightness(0.82);
+      transition: filter 0.4s;
+      display: block;
+    }
+    .gallery__item:hover img { filter: brightness(0.95); }
+    .gallery__caption {
+      padding: 12px 0 0;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+    }
+
+    /* ============================================================
+       EXPERIENCE（Desire）
+    ============================================================ */
+    .experience {
+      padding: 100px 0;
+      background: var(--bg-mid);
+    }
+    .experience__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .experience__grid--reverse { direction: rtl; }
+    .experience__grid--reverse > * { direction: ltr; }
+    .experience__img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: brightness(0.82);
+    }
+    .experience__body {
+      padding: 16px 0;
+    }
+    .experience__body p {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 2.15;
+      letter-spacing: 0.07em;
+    }
+    .experience__body p + p { margin-top: 1.2em; }
+
+    /* ============================================================
+       COFFEE COLLAB
+    ============================================================ */
+    .coffee-collab {
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-mid);
+    }
+    .coffee-collab__inner {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .coffee-collab__logo {
+      flex: 0 0 130px;
+      filter: brightness(0.88);
+    }
+    .coffee-collab__logo img {
+      width: 100%;
+      border-radius: 2px;
+    }
+    .coffee-collab__text h3 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .coffee-collab__text p {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.95;
+      letter-spacing: 0.07em;
+    }
+
+    /* ============================================================
+       LOCATION（Memory）
+    ============================================================ */
+    .location {
+      padding: 100px 0;
+      text-align: center;
+    }
+    .location__story {
+      max-width: 640px;
+      margin: 0 auto 64px;
+      font-size: 0.9rem;
+      line-height: 2.25;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+    .location__cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .location__card {
+      padding: 36px 24px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .location__card:hover { border-color: var(--border-gold); }
+    .location__card__icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .location__card__title {
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .location__card__desc {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      letter-spacing: 0.07em;
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       REVIEWS（Memory）
+    ============================================================ */
+    .reviews {
+      padding: 100px 0;
+      background: var(--bg-mid);
+    }
+    .reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .review-card {
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .review-card__stars {
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+    .review-card__body {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.95;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .review-card__author {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+    }
+
+    /* ============================================================
+       AMENITIES
+    ============================================================ */
+    .amenities {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .amenities__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .amenities__item {
+      padding: 10px 22px;
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--text-sub);
+    }
+
+    /* ============================================================
+       PRICING（Memory → Action）
+    ============================================================ */
+    .pricing {
+      padding: 100px 0;
+      background: var(--bg-mid);
+      text-align: center;
+    }
+    .pricing__card {
+      max-width: 640px;
+      margin: 56px auto 0;
+      border: 1px solid var(--border-gold);
+      padding: 60px 52px;
+      position: relative;
+      background: var(--bg-card);
+    }
+    .pricing__card::before {
+      content: '和 の 間';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      padding: 0 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--accent-gold);
+      white-space: nowrap;
+    }
+    .pricing__price {
+      font-family: var(--font-en);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 300;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .pricing__note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      margin-bottom: 40px;
+    }
+    .pricing__list {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 44px;
+    }
+    .pricing__list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      letter-spacing: 0.07em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pricing__list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 1px;
+      background: var(--accent-gold);
+    }
+    .pricing__ota {
+      margin-top: 28px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .pricing__ota a {
+      color: var(--text-sub);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .pricing__ota a:hover { color: var(--text-main); }
+
+    /* ============================================================
+       CTA（Action）
+    ============================================================ */
+    .cta-section {
+      position: relative;
+      padding: 160px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .cta-section__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/wanoma-040.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.15);
+    }
+    .cta-section__content {
+      position: relative;
+      z-index: 2;
+    }
+    .cta-section__title {
+      font-size: clamp(1.6rem, 3.5vw, 2.7rem);
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .cta-section__sub {
+      font-family: var(--font-en);
+      font-style: italic;
+      font-size: clamp(0.88rem, 1.8vw, 1.15rem);
+      color: var(--text-sub);
+      margin-bottom: 56px;
+      letter-spacing: 0.07em;
+    }
+    .cta-section__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .site-footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .site-footer__inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .site-footer__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-footer__logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+    .site-footer__logo-text { line-height: 1.6; }
+    .site-footer__logo-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      font-weight: 400;
+    }
+    .site-footer__logo-text span {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .site-footer__links a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-main); }
+    .site-footer__copy {
+      margin-top: 44px;
+      text-align: center;
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+    }
+
+    /* ============================================================
+       レスポンシブ
+    ============================================================ */
+    @media (max-width: 960px) {
+      .bento-card--c7  { grid-column: span 12; }
+      .bento-card--c5  { grid-column: span 12; }
+      .bento-card--c4  { grid-column: span 12; }
+      .bento-card--c8  { grid-column: span 12; }
+      .experience__grid { grid-template-columns: 1fr; gap: 36px; direction: ltr; }
+      .reviews__grid { grid-template-columns: 1fr; }
+      .location__cards { grid-template-columns: 1fr; }
+      .coffee-collab__inner { flex-direction: column; gap: 28px; }
+      .site-header__nav { display: none; }
+      .pricing__card { padding: 48px 28px; }
+    }
+    @media (max-width: 640px) {
+      .container, .gallery__header { padding: 0 20px; }
+      .gallery__track { padding: 0 20px; scroll-padding: 20px; }
+      .hero__content { padding: 0 20px 72px; }
+      .cta-section__buttons { flex-direction: column; }
+      .btn--large { padding: 18px 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================
+     HEADER
+=================================================== -->
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a href="https://wabisabi-himeji.jp" class="site-header__logo">
+      <img src="images/logo.png" alt="Wabi-Sabi">
+      <div class="site-header__logo-text">
+        <span class="lang-ja">姫路城下町古民家旅館</span>
+        <span class="lang-en">Castle Town Machiya Inn</span>
+        <strong>侘 寂</strong>
+      </div>
+    </a>
+    <nav class="site-header__nav">
+      <a href="#features">
+        <span class="lang-ja">魅力</span>
+        <span class="lang-en">Features</span>
+      </a>
+      <a href="#gallery">
+        <span class="lang-ja">写真集</span>
+        <span class="lang-en">Gallery</span>
+      </a>
+      <a href="#location">
+        <span class="lang-ja">アクセス</span>
+        <span class="lang-en">Access</span>
+      </a>
+      <a href="#pricing">
+        <span class="lang-ja">料金</span>
+        <span class="lang-en">Rates</span>
+      </a>
+      <a href="https://wabisabi-himeji.jp" target="_blank">
+        <span class="lang-ja">公式サイト</span>
+        <span class="lang-en">Official Website</span>
+      </a>
+    </nav>
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switcher">
+        <button class="lang-btn is-active" id="langJa">JP</button>
+        <span class="divider-s"></span>
+        <button class="lang-btn" id="langEn">EN</button>
+      </div>
+      <a href="https://wabisabi-himeji.jp" target="_blank" class="site-header__cta">
+        <span class="lang-ja">ご予約</span>
+        <span class="lang-en">Book Now</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ===================================================
+     HERO（A: Attention）
+=================================================== -->
+<section class="hero" id="hero">
+  <div class="hero__bg" id="heroBg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <div class="hero__room-badge">WANOMA — MOONLIT ROOM</div>
+    <h1 class="hero__title">
+      <span class="lang-ja">月の静寂に包まれる、<br>二人だけの和空間。</span>
+      <span class="lang-en">A serene space for two,<br>wrapped in moonlit tranquility.</span>
+    </h1>
+    <div class="hero__scroll">
+      <span class="hero__scroll-line"></span>
+      SCROLL
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     INTRO（A → I: Attention → Interest）
+=================================================== -->
+<section class="intro" id="intro">
+  <div class="container">
+    <div class="fade-up">
+      <span class="intro__tag">
+        <span class="lang-ja">姫路城下町 古民家旅館 侘寂</span>
+        <span class="lang-en">Wabi-Sabi Himeji Castle Town Machiya Inn</span>
+      </span>
+    </div>
+    <h2 class="intro__title fade-up">
+      <span class="lang-ja">侘寂の<em>静謐</em>客室<br>「和の間」</span>
+      <span class="lang-en">The <em>Tranquil</em> Room<br>"Wanoma"</span>
+    </h2>
+    <p class="intro__title-en fade-up">Moonlit Tranquility for Two</p>
+    <div class="divider divider--center"></div>
+    <div class="intro__body fade-up">
+      <div class="lang-ja">
+        <p>
+          扉を開けた瞬間、目に飛び込む大胆な赤い襖絵——。<br>
+          赤い円弧と梅の枝が描かれた和の間だけの圧倒的なビジュアルが、<br>
+          他のどの部屋とも異なる個性を放ちます。
+        </p>
+        <p>
+          定員2名の和の間は、ご夫婦やカップルのための空間。<br>
+          東から差し込む朝の光、五右衛門風呂の温もり、そして夜の静けさ——<br>
+          「月の光のような静謐さ」に包まれる、特別な時間をお過ごしください。
+        </p>
+      </div>
+      <div class="lang-en">
+        <p>
+          The moment you open the door, a bold red fusuma painting commands your gaze—<br>
+          Red arcs and plum branches create a visual identity found only in Wanoma,<br>
+          radiating a personality unlike any other room.
+        </p>
+        <p>
+          Designed exclusively for two, Wanoma is a space for couples.<br>
+          Morning light from the east, the warmth of the Goemonburo, the silence of night—<br>
+          Spend a special time wrapped in "moonlit tranquility."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     FEATURES / Bento UI（I: Interest）
+=================================================== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features__header fade-up">
+      <span class="section-label">WHAT MAKES IT SPECIAL</span>
+      <h2 class="section-title">
+        <span class="lang-ja">和の間、6つの魅力</span>
+        <span class="lang-en">Six Charms of Wanoma</span>
+      </h2>
+      <p class="section-en">Six Reasons This Room Is Extraordinary</p>
+    </div>
+
+    <div class="bento">
+      <!-- 01 木組みの美（大） -->
+      <div class="bento-card bento-card--c7 fade-up">
+        <img class="bento-card__img" src="images/wanoma-010.jpg" alt="ダイナミックな丸太梁">
+        <div class="bento-card__body">
+          <p class="bento-card__num">01 / BEAMS &amp; TIMBER</p>
+          <h3 class="bento-card__title">
+            <span class="lang-ja">圧倒的な木組みの美</span>
+            <span class="lang-en">Ancient Beams &amp; Timber</span>
+          </h3>
+          <p class="lang-ja bento-card__desc">
+            築150年の古民家が誇る、巨大な丸太梁が空間を横断する圧倒的な景観。機械では再現できない手刻みの木組みは、職人の技と時の重みが宿る芸術品です。この迫力こそが、和の間が「侘寂の最高峰」と称される理由です。
+          </p>
+          <p class="lang-en bento-card__desc">
+            The 150-year-old mammoth beams crossing the ceiling are a sight to behold. These hand-cut timbers, impossible to replicate with modern machinery, are masterpieces that carry the weight of history.
+          </p>
+        </div>
+      </div>
+
+      <!-- 02 檜浴室 -->
+      <div class="bento-card bento-card--c5 fade-up">
+        <img class="bento-card__img" src="images/wanoma-030.jpg" alt="檜の専用浴室">
+        <div class="bento-card__body">
+          B / GOEMONBURO</p>
+          <h3 class="bento-card__title">
+            <span class="lang-ja">専用 檜浴室</span>
+            <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
+          </h3>
+          <p class="lang-ja bento-card__desc">
+            天然の檜で仕上げた専用浴室。入浴のたびに立ち上る清々しい木の香りが、旅の疲れをやさしく溶かします。
+          </p>
+          <p class="lang-en bento-card__desc">
+            Relax in your private bath crafted from natural Japanese cypress (Hinoki). The calming scent of the wood will melt away the fatigue of your travels.
+          </p>
+        </div>
+      </div>
+
+      <!-- 03 天窓 -->
+      <div class="bento-card bento-card--c4 fade-up">
+        <img class="bento-card__img" src="images/wanoma-9967.jpg" alt="天窓と梁が織りなす空間">
+        <div class="bento-card__body">
+          C / MORNING LIGHT</p>
+          <h3 class="bento-card__title">
+            <span class="lang-ja">天窓から降る光</span>
+            <span class="lang-en">Light from the Skylight</span>
+          </h3>
+          <p class="lang-ja bento-card__desc">
+            朝、天窓から差し込む光が梁を照らす瞬間——それだけで、この部屋を選んだ価値があります。
+          </p>
+          <p class="lang-en bento-card__desc">
+            In the morning, natural light pours through the skylight, illuminating the ancient beams. A moment of pure tranquility that makes your stay truly worthwhile.
+          </p>
+        </div>
+      </div>
+
+      <!-- 04 装飾備品 -->
+      <div class="bento-card bento-card--c4 fade-up">
+        <img class="bento-card__img" src="images/wanoma-040.jpg" alt="和紙ランプと侘び寂びの装飾">
+        <div class="bento-card__body">
+          D / FOR TWO</p>
+          <h3 class="bento-card__title">
+            <span class="lang-ja">館内最多、珠玉の骨董品</span>
+            <span class="lang-en">Curated Antiques &amp; Gems</span>
+          </h3>
+          <p class="lang-ja bento-card__desc">
+            全4室の中で、最も多くのアンティークや骨董品が配されているのが和の間です。和紙ランプの柔らかな光に照らされた名品たちが、静かな夜を豊かに彩ります。
+          </p>
+          <p class="lang-en bento-card__desc">
+            Wanoma features the largest collection of antiques among all four rooms. Exquisite pieces illuminated by the soft glow of Washi lamps enrich your quiet night.
+          </p>
+        </div>
+      </div>
+
+      <!-- 05 Align Coffee -->
+      <div class="bento-card bento-card--c4 bento-card--coffee fade-up">
+        <div class="bento-card__body">
+          <a href="https://maps.app.goo.gl/fcheVRccH4enn63JA" target="_blank" rel="noopener"><img class="bento-card__logo" src="images/align-coffee-logo.jpg" alt="Align Coffee Roaster"></a>
+          <p class="bento-card__num">05 / SPECIALTY COFFEE</p>
+          <h3 class="bento-card__title">Align Coffee Roaster</h3>
+          <p class="lang-ja bento-card__desc">
+            姫路を代表するスペシャルティコーヒーロースターのドリップコーヒーを客室にご用意。梁の下で味わう一杯は格別です。
+          </p>
+          <p class="lang-en bento-card__desc">
+            Enjoy specialty drip coffee from Himeji's renowned Align Coffee Roaster right in your room. The taste is exceptional under these historic beams.
+          </p>
+        </div>
+      </div>
+
+      <!-- 06 2階プライベート -->
+      <div class="bento-card bento-card--c4 fade-up">
+        <img class="bento-card__img" src="images/wanoma-9955.jpg" alt="2階プライベート空間">
+        <div class="bento-card__body">
+          <p class="bento-card__num">06 / PRIVATE FLOOR</p>
+          <h3 class="bento-card__title">
+            <span class="lang-ja">2階専用の静寂</span>
+            <span class="lang-en">1st Floor East, Red Fusuma Room</span>
+          </h3>
+          <p class="lang-ja bento-card__desc">
+            2階フロア全体が和の間の専用空間。階下とは異なる静けさの中、梁に囲まれた非日常の夜をお過ごしください。
+          </p>
+          <p class="lang-en bento-card__desc">
+            The entire second floor is your private sanctuary. Experience a peaceful night surrounded by historic architecture, far removed from daily life.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     GALLERY（D: Desire）
+=================================================== -->
+<section class="gallery" id="gallery">
+  <div class="gallery__header">
+    <span class="section-label fade-up">GALLERY</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">和の間の景色</span>
+      <span class="lang-en">Moments in Wanoma</span>
+    </h2>
+    <p class="section-en fade-up">Moments in Wanoma</p>
+  </div>
+  <div class="gallery__track" id="galleryTrack">
+    <div class="gallery__item">
+      <img src="images/wanoma-001.jpg" alt="和の間 入口">
+      <p class="gallery__caption">
+        <span class="lang-ja">入口</span>
+        <span class="lang-en">Entrance</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-005.jpg" alt="和の間 室内">
+      <p class="gallery__caption">
+        <span class="lang-ja">室内全景</span>
+        <span class="lang-en">Interior</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-010.jpg" alt="丸太梁 全景">
+      <p class="gallery__caption">
+        <span class="lang-ja">丸太梁</span>
+        <span class="lang-en">Ancient Beams</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-9967.jpg" alt="天窓と寝室">
+      <p class="gallery__caption">
+        <span class="lang-ja">天窓と梁</span>
+        <span class="lang-en">Skylight &amp; Beams</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-022.jpg" alt="木組みの細部">
+      <p class="gallery__caption">
+        <span class="lang-ja">木組みの細部</span>
+        <span class="lang-en">Timber Details</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-9955.jpg" alt="寝室">
+      <p class="gallery__caption">
+        <span class="lang-ja">寝室</span>
+        <span class="lang-en">Bedroom</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-030.jpg" alt="檜浴室">
+      <p class="gallery__caption">
+        <span class="lang-ja">檜浴室</span>
+        <span class="lang-en">Hinoki Bath</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-9950.jpg" alt="行灯とガラス床展示">
+      <p class="gallery__caption">
+        <span class="lang-ja">行灯と梁</span>
+        <span class="lang-en">Andon &amp; Beams</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-040.jpg" alt="和紙ランプ">
+      <p class="gallery__caption">
+        <span class="lang-ja">和紙ランプ</span>
+        <span class="lang-en">Washi Lamp</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-9952.jpg" alt="ガラス床ディスプレイ">
+      <p class="gallery__caption">
+        <span class="lang-ja">ガラス床展示</span>
+        <span class="lang-en">Glass Floor Display</span>
+      </p>
+    </div>
+    <div class="gallery__item">
+      <img src="images/wanoma-9953.jpg" alt="寝室全景">
+      <p class="gallery__caption">
+        <span class="lang-ja">寝室全景</span>
+        <span class="lang-en">Bedroom Panorama</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     EXPERIENCE（D: Desire）
+=================================================== -->
+<section class="experience" id="experience">
+  <div class="container">
+
+    <!-- 浴室体験 -->
+    <div class="experience__grid fade-up">
+      <img class="experience__img" src="images/wanoma-030.jpg" alt="檜浴室体験">
+      <div class="experience__body">
+        <span class="section-label">GOEMONBURO EXPERIENCE</span>
+        <h2 class="section-title">
+          <span class="lang-ja">檜が香る、<br>静かな時間</span>
+          <span class="lang-en">A Quiet Moment, <br>Scented with Cypress</span>
+        </h2>
+        <div class="divider"></div>
+        <div class="lang-ja">
+          <p>
+            古くから日本人が愛してきた「檜」の香りは、心を落ち着かせ、疲れを癒す力があると言われています。和の間の専用浴室は、天然檜で仕上げた贅沢な空間。入浴するたびに立ち上る清々しい木の香りとともに、日々の疲れを溶かしてください。
+          </p>
+          <p>
+            旅の疲れを癒すのは、豪華な設備だけではありません。素材の持つ自然の力——それこそが侘び寂びの美学です。
+          </p>
+        </div>
+        <div class="lang-en">
+          <p>
+            Since ancient times, Japanese people have cherished the scent of cypress (Hinoki) for its power to calm the mind and heal fatigue. Our private bath, finished in natural Hinoki, offers a luxurious experience where the refreshing woody aroma will melt away your stress.
+          </p>
+          <p>
+            Healing isn't just about lavish amenities; it's about the natural power of materials—the very core of the wabi-sabi aesthetic.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 梁の体験 -->
+    <div class="experience__grid experience__grid--reverse fade-up">
+      <img class="experience__img" src="images/wanoma-9950.jpg" alt="行灯と梁の空間">
+      <div class="experience__body">
+        <span class="section-label">MOONLIT TRANQUILITY</span>
+        <h2 class="section-title">
+          <span class="lang-ja">夜、梁の下で<br>過ごす時間</span>
+          <span class="lang-en">A Night Beneath <br>Ancient Beams</span>
+        </h2>
+        <div class="divider"></div>
+        <div class="lang-ja">
+          <p>
+            夜になると、照明が梁を浮かび上がらせます。150年前の職人が刻んだ木の表情と、現代のやわらかな灯りが交わるその景色は、写真では伝わりきらない体感の美しさです。
+          </p>
+          <p>
+            古民家の夜は静かです。その静寂の中で、巨大な梁に守られながら眠る体験は、日常から遠く離れた場所へ連れていってくれます。
+          </p>
+        </div>
+        <div class="lang-en">
+          <p>
+            At night, the lighting brings out the textures of the beams. The interplay of 150-year-old woodcrafted details and soft modern light creates an atmosphere of beauty that must be experienced in person.
+          </p>
+          <p>
+            Nights in an ancient house are remarkably still. Sleeping under the protection of these massive timbers transports you far beyond the reach of everyday life.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coffee Collab -->
+    <div class="coffee-collab fade-up" style="margin-top: 80px; padding: 56px 40px; border: 1px solid var(--border);">
+      <div class="coffee-collab__inner">
+        <div class="coffee-collab__logo">
+          <a href="https://maps.app.goo.gl/fcheVRccH4enn63JA" target="_blank" rel="noopener"><img src="images/align-coffee-logo.jpg" alt="Align Coffee Roaster ロゴ"></a>
+        </div>
+        <div class="coffee-collab__text">
+          <h3>
+            <span class="lang-ja">目覚めは、姫路最高峰のコーヒーとともに。</span>
+            <span class="lang-en">Waking Up to Himeji's Finest Coffee.</span>
+          </h3>
+          <p class="lang-ja">
+            和の間には、姫路を代表するスペシャルティコーヒーロースター「Align Coffee Roaster」のドリップコーヒーをご用意しています。世界中から厳選された生豆を丁寧に自家焙煎した一杯は、古民家の梁の下でいただくと、また格別の味わいです。旅の朝を、最高の香りで始めてください。
+          </p>
+          <p class="lang-en">
+            Wanoma features drip coffee from Align Coffee Roaster, Himeji's premier specialty roaster. Each cup, crafted from carefully selected beans roasted in-house, tastes exceptional beneath our historic beams. Start your morning with a world-class aroma.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===================================================
+     LOCATION（M: Memory）
+=================================================== -->
+<section class="location" id="location">
+  <div class="container">
+    <span class="section-label fade-up">LOCATION &amp; ACCESS</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">姫路城を横目に、<br>宿へと歩む。</span>
+      <span class="lang-en">A walk through history, <br>guided by the castle.</span>
+    </h2>
+    <p class="section-en fade-up">A Walk Through History, Guided by the Castle</p>
+    <div class="divider divider--center"></div>
+
+    <p class="location__story fade-up lang-ja">
+      姫路駅から宿までの道は、それ自体が姫路の旅です。城下町の繁華街を抜け、世界遺産・姫路城を横目に眺めながら歩くこと約30分——その道中で、旅の気持ちがゆっくりと整っていきます。タクシーならわずか7分。しかし、あえて歩いて来る宿泊客が多いのは、この道が単なる「移動」ではなく、城下町の空気を味わう「体験」だからです。
+    </p>
+    <p class="location__story fade-up lang-en">
+      The journey from Himeji Station to our inn is a travel experience in itself. A 30-minute walk through the bustling castle town, with the World Heritage Himeji Castle constantly in view, prepares your heart for the stay ahead. While a taxi takes only 7 minutes, many guests choose to walk to fully immerse themselves in the atmosphere of the historic town.
+    </p>
+
+    <div class="location__cards fade-up">
+      <div class="location__card">
+        <span class="location__card__icon">🏯</span>
+        <h4 class="location__card__title">
+          <span class="lang-ja">世界遺産 姫路城</span>
+          <span class="lang-en">Himeji Castle</span>
+        </h4>
+        <p class="location__card__desc">
+          <span class="lang-ja">徒歩圏内<br>日本三名城のひとつ</span>
+          <span class="lang-en">Walking distance<br>One of Japan's top 3 castles</span>
+        </p>
+      </div>
+      <div class="location__card">
+        <span class="location__card__icon">🚂</span>
+        <h4 class="location__card__title">
+          <span class="lang-ja">JR 姫路駅</span>
+          <span class="lang-en">JR Himeji Station</span>
+        </h4>
+        <p class="location__card__desc">
+          <span class="lang-ja">徒歩 約30分<br>タクシー 約7分</span>
+          <span class="lang-en">Approx. 30 min walk<br>Approx. 7 min by taxi</span>
+        </p>
+      </div>
+      <div class="location__card">
+        <span class="location__card__icon">🏮</span>
+        <h4 class="location__card__title">
+          <span class="lang-ja">城下町エリア</span>
+          <span class="lang-en">Castle Town Area</span>
+        </h4>
+        <p class="location__card__desc">
+          <span class="lang-ja">繁華街・グルメ直結<br>散策ルート上</span>
+          <span class="lang-en">Dining &amp; Shopping<br>Perfect for strolling</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     REVIEWS（M: Memory）
+=================================================== -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <span class="section-label fade-up">GUEST VOICES</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">お客様の声</span>
+      <span class="lang-en">Guest Voices</span>
+    </h2>
+    <p class="section-en fade-up">See what our guests say</p>
+
+    <div class="reviews__grid">
+      <div class="review-card fade-up">
+        <p class="review-card__stars">★★★★★</p>
+        <p class="review-card__body lang-ja">「梁の迫力に圧倒されました。写真で見ていたより遥かに大きく、美しい。古民家の歴史を体で感じる特別な体験でした。」</p>
+        <p class="review-card__body lang-en">"The scale of the beams was overwhelming. Far larger and more beautiful than in pictures. A truly special experience feeling the history of an ancient house."</p>
+        <p class="review-card__author">— 40s Couple / Booking.com</p>
+      </div>
+      <div class="review-card fade-up">
+        <p class="review-card__stars">★★★★★</p>
+        <p class="review-card__body lang-ja">「和の間は別格でした。朝、天窓から光が差し込んでくる瞬間が忘れられません。また必ず来ます。」</p>
+        <p class="review-card__body lang-en">"Wanoma was in a class of its own. I'll never forget the moment light poured through the skylight in the morning. Definitely coming back."</p>
+        <p class="review-card__author">— 30s Couple / Rakuten Travel</p>
+      </div>
+      <div class="review-card fade-up">
+        <p class="review-card__stars">★★★★★</p>
+        <p class="review-card__body lang-ja">「檜の浴室とAlign Coffeeの組み合わせが最高でした。朝の過ごし方が贅沢で、旅の満足度が何倍にもなりました。」</p>
+        <p class="review-card__body lang-en">"The combination of the cypress bath and Align Coffee was perfection. The morning was so luxurious, it multiplied our satisfaction with the trip."</p>
+        <p class="review-card__author">— 50s Couple / Jalan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     AMENITIES（Memory）
+=================================================== -->
+<section class="amenities" id="amenities">
+  <div class="container">
+    <span class="section-label fade-up">AMENITIES</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">含まれるアメニティ</span>
+      <span class="lang-en">Amenities</span>
+    </h2>
+    <div class="amenities__list fade-up">
+      <span class="amenities__item">
+        <span class="lang-ja">専用 檜浴室（バスタブ付）</span>
+        <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">Align Coffee Roaster ドリップコーヒー</span>
+        <span class="lang-en">Align Coffee Drip Bag</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">日本茶・抹茶パック</span>
+        <span class="lang-en">Green Tea &amp; Matcha</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">クッキー</span>
+        <span class="lang-en">Cookies</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">バスタオル・フェイスタオル</span>
+        <span class="lang-en">Towels</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">浴衣・スリッパ</span>
+        <span class="lang-en">Yukata &amp; Slippers</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">ドライヤー</span>
+        <span class="lang-en">Hair Dryer</span>
+      </span>
+      <span class="amenities__item">Wi-Fi</span>
+      <span class="amenities__item">
+        <span class="lang-ja">1階東 赤い襖絵の客室</span>
+        <span class="lang-en">1st Floor East, Red Fusuma Room</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     PRICING（M → A）
+=================================================== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <span class="section-label fade-up">ROOM RATE</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">料金・ご予約</span>
+      <span class="lang-en">Rates &amp; Booking</span>
+    </h2>
+    <p class="section-en fade-up">Reserve Your Stay in Wanoma</p>
+
+    <div class="pricing__card fade-up">
+      <p class="pricing__price">¥37,400 〜</p>
+      <p class="pricing__note lang-ja">1室あたり / 1泊 素泊まり（2名様利用）</p>
+      <p class="pricing__note lang-en">Per room / 1 night, room only (for 2 guests)</p>
+
+      <ul class="pricing__list">
+        <li>
+          <span class="lang-ja">和の間（1階特別室）専用空間</span>
+          <span class="lang-en">Wanoma Private Room (1F)</span>
+        </li>
+        <li>
+          <span class="lang-ja">専用 五右衛門風呂（檜浴室）</span>
+          <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
+        </li>
+        <li>
+          <span class="lang-ja">Align Coffee Roaster ドリップコーヒー</span>
+          <span class="lang-en">Align Coffee Drip Bag</span>
+        </li>
+        <li>
+          <span class="lang-ja">日本茶・抹茶パック・クッキー</span>
+          <span class="lang-en">Green Tea &amp; Cookies</span>
+        </li>
+        <li>
+          <span class="lang-ja">アメニティ一式（浴衣・タオル等）</span>
+          <span class="lang-en">Full Set of Amenities</span>
+        </li>
+        <li>
+          <span class="lang-ja">姫路城下町 古民家体験</span>
+          <span class="lang-en">Historic Machiya Experience</span>
+        </li>
+      </ul>
+
+      <a href="https://wabisabi-himeji.jp" target="_blank" class="btn btn--primary" style="width: 100%; margin-bottom: 12px;">
+        <span class="lang-ja">公式サイトで空き確認・ご予約</span>
+        <span class="lang-en">Check Availability / Book Now</span>
+      </a>
+
+      <p class="pricing__ota">
+        <span class="lang-ja">各OTAからも予約可能：</span>
+        <span class="lang-en">Also available on:</span>
+        <a href="https://travel.rakuten.co.jp/HOTEL/167556/" target="_blank">Rakuten</a> /
+        <a href="https://www.jalan.net/yad368484/" target="_blank">Jalan</a> /
+        <a href="https://www.booking.com/" target="_blank">Booking.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     CTA（A: Action）
+=================================================== -->
+<section class="cta-section" id="book">
+  <div class="cta-section__bg"></div>
+  <div class="cta-section__content container">
+    <span class="section-label">RESERVE YOUR STAY</span>
+    <h2 class="cta-section__title fade-up">
+      <span class="lang-ja">月の静寂が待つ、<br>一夜のために。</span>
+      <span class="lang-en">For a single night,<br>where moonlit tranquility awaits.</span>
+    </h2>
+    <p class="cta-section__sub fade-up lang-ja">赤い襖絵と五右衛門風呂、そして二人だけの時間を。</p>
+    <p class="cta-section__sub fade-up lang-en">A red fusuma, a Goemonburo, and time for just the two of you.</p>
+    <div class="cta-section__buttons fade-up">
+      <a href="https://wabisabi-himeji.jp" target="_blank" class="btn btn--primary btn--large">
+        <span class="lang-ja">公式サイトで予約する</span>
+        <span class="lang-en">Book via Official Website</span>
+      </a>
+      <a href="mailto:info@wabisabi-himeji.jp" class="btn btn--outline btn--large">
+        <span class="lang-ja">お問い合わせ</span>
+        <span class="lang-en">Inquiry</span>
+      </a>
+    </div>
+    <p style="margin-top: 28px; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em;" class="fade-up">
+      <span class="lang-ja">公式サイト：</span>
+      <span class="lang-en">Official Website: </span>
+      <a href="https://wabisabi-himeji.jp" target="_blank" style="color: var(--accent-gold); text-decoration: underline; text-underline-offset: 3px;">wabisabi-himeji.jp</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ===================================================
+     FOOTER
+=================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <div class="site-footer__logo">
+        <img src="images/logo.png" alt="Wabi-Sabi">
+        <div class="site-footer__logo-text">
+          <strong>侘 寂</strong>
+          <span class="lang-ja">姫路城下町古民家旅館<br>〒670-0012 兵庫県姫路市</span>
+          <span class="lang-en">Castle Town Machiya Inn<br>Himeji, Hyogo, Japan</span>
+        </div>
+      </div>
+      <div class="site-footer__links">
+        <a href="https://wabisabi-himeji.jp" target="_blank">
+          <span class="lang-ja">公式サイト</span>
+          <span class="lang-en">Official Website</span>
+        </a>
+        <a href="https://www.instagram.com/wabisabi.himeji/" target="_blank">Instagram</a>
+        <a href="https://travel.rakuten.co.jp/HOTEL/167556/" target="_blank">
+          <span class="lang-ja">楽天トラベル</span>
+          <span class="lang-en">Rakuten Travel</span>
+        </a>
+        <a href="https://www.jalan.net/yad368484/" target="_blank">
+          <span class="lang-ja">じゃらん</span>
+          <span class="lang-en">Jalan</span>
+        </a>
+        <a href="https://www.booking.com/" target="_blank">Booking.com</a>
+      </div>
+    </div>
+    <p class="site-footer__copy">
+      © 2026 Wabi-Sabi Himeji. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+<!-- ===================================================
+     JavaScript
+=================================================== -->
+<script>
+  'use strict';
+
+  // --- Hero BG: ロード後にスケールアニメ ---
+  const heroBg = document.getElementById('heroBg');
+  const bgImg  = new Image();
+  bgImg.onload = () => heroBg.classList.add('is-loaded');
+  bgImg.src    = 'images/wanoma-010.jpg';
+  // フォールバック（即表示）
+  setTimeout(() => heroBg.classList.add('is-loaded'), 100);
+
+  // --- Header: スクロールで背景付与 ---
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 50);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // --- IntersectionObserver: fade-up ---
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+  fadeEls.forEach(el => io.observe(el));
+
+  // --- Language Toggle ---
+  const body = document.body;
+  const btnJa = document.getElementById('langJa');
+  const btnEn = document.getElementById('langEn');
+
+  const setLang = (lang) => {
+    if (lang === 'en') {
+      body.classList.replace('lang-ja', 'lang-en') || body.classList.add('lang-en');
+      btnEn.classList.add('is-active');
+      btnJa.classList.remove('is-active');
+      document.title = "Wanoma | Wabi-Sabi Himeji";
+    } else {
+      body.classList.replace('lang-en', 'lang-ja') || body.classList.add('lang-ja');
+      btnJa.classList.add('is-active');
+      btnEn.classList.remove('is-active');
+      document.title = "和の間 | 姫路城下町古民家旅館 侘寂";
+    }
+    localStorage.setItem('wanoma-lang', lang);
+  };
+
+  btnJa.addEventListener('click', () => setLang('ja'));
+  btnEn.addEventListener('click', () => setLang('en'));
+
+  // Init
+  const savedLang = localStorage.getItem('wanoma-lang') || (navigator.language.startsWith('ja') ? 'ja' : 'en');
+  setLang(savedLang);
+</script>
+
+</body>
+</html>

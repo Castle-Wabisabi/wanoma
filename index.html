@@ -1667,7 +1667,10 @@
   btnEn.addEventListener('click', () => setLang('en'));
 
   // Init
-  const savedLang = localStorage.getItem('wanoma-lang') || (navigator.language.startsWith('ja') ? 'ja' : 'en');
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  const savedLang = (urlLang === 'en' || urlLang === 'ja')
+    ? urlLang
+    : (localStorage.getItem('wanoma-lang') || (navigator.language.startsWith('ja') ? 'ja' : 'en'));
   setLang(savedLang);
 </script>
 

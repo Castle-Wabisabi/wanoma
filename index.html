@@ -268,13 +268,15 @@
       display: inline-block;
       padding: 9px 22px;
       border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
+      background: var(--accent-gold);
+      color: var(--bg);
       font-size: 0.76rem;
       letter-spacing: 0.14em;
       transition: background 0.2s, color 0.2s;
     }
     .site-header__cta:hover {
-      background: var(--accent-gold);
+      background: #d4b46e;
+      border-color: #d4b46e;
       color: var(--bg);
     }
 
@@ -443,7 +445,7 @@
 
     .bento-card__img {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
       filter: brightness(0.82);
@@ -537,7 +539,7 @@
        EXPERIENCE（Desire）
     ============================================================ */
     .experience {
-      padding: 100px 0;
+      padding: 0 0 100px;
       background: var(--bg-mid);
     }
     .experience__grid {
@@ -629,9 +631,42 @@
     }
     .location__card:hover { border-color: var(--border-gold); }
     .location__card__icon {
-      font-size: 1.8rem;
       display: block;
-      margin-bottom: 16px;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 20px;
+      color: var(--accent-gold);
+      opacity: 0.9;
+    }
+    .location__card__icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .location__map {
+      margin-top: 40px;
+    }
+    .location__map iframe {
+      display: block;
+      width: 100%;
+      height: 380px;
+      border: 1px solid var(--border);
+      filter: grayscale(0.5) brightness(0.85) contrast(1.05);
+    }
+    .location__map-link {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+    }
+    .location__map-link a {
+      color: var(--accent-gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
     .location__card__title {
       font-size: 0.88rem;
@@ -690,6 +725,15 @@
       padding: 80px 0;
       text-align: center;
     }
+    .amenities__block {
+      margin-bottom: 72px;
+    }
+    .amenities__cta {
+      margin-top: 56px;
+    }
+    .amenities__cta .btn {
+      min-width: min(100%, 360px);
+    }
     .amenities__list {
       display: flex;
       flex-wrap: wrap;
@@ -717,7 +761,7 @@
       max-width: 640px;
       margin: 56px auto 0;
       border: 1px solid var(--border-gold);
-      padding: 60px 52px;
+      padding: 36px 52px 60px;
       position: relative;
       background: var(--bg-card);
     }
@@ -739,13 +783,21 @@
       font-size: clamp(2.4rem, 5vw, 3.6rem);
       font-weight: 300;
       color: var(--text-main);
-      margin-bottom: 6px;
+      line-height: 1.3;
+      margin-bottom: 0;
       letter-spacing: 0.02em;
     }
     .pricing__note {
       font-size: 0.72rem;
-      color: var(--text-muted);
+      color: var(--accent-gold);
       letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+    .pricing__times {
+      font-size: 0.72rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.12em;
+      line-height: 1.9;
       margin-bottom: 40px;
     }
     .pricing__list {
@@ -898,7 +950,7 @@
       .location__cards { grid-template-columns: 1fr; }
       .coffee-collab__inner { flex-direction: column; gap: 28px; }
       .site-header__nav { display: none; }
-      .pricing__card { padding: 48px 28px; }
+      .pricing__card { padding: 32px 28px 48px; }
     }
     @media (max-width: 640px) {
       .container, .gallery__header { padding: 0 20px; }
@@ -928,10 +980,6 @@
       <a href="#features">
         <span class="lang-ja">魅力</span>
         <span class="lang-en">Features</span>
-      </a>
-      <a href="#gallery">
-        <span class="lang-ja">写真集</span>
-        <span class="lang-en">Gallery</span>
       </a>
       <a href="#location">
         <span class="lang-ja">アクセス</span>
@@ -1044,7 +1092,7 @@
 
     <div class="bento">
       <!-- 01 赤襖の入口 -->
-      <div class="bento-card bento-card--c7 fade-up">
+      <div class="bento-card bento-card--c4 fade-up">
         <img class="bento-card__img" src="images/wanoma-010.jpg" alt="赤い襖が迎える和の間の入口">
         <div class="bento-card__body">
           <p class="bento-card__num">01 / RED FUSUMA</p>
@@ -1062,10 +1110,10 @@
       </div>
 
       <!-- 02 檜浴室 -->
-      <div class="bento-card bento-card--c5 fade-up">
+      <div class="bento-card bento-card--c4 fade-up">
         <img class="bento-card__img" src="images/wanoma-030.jpg" alt="檜の専用浴室">
         <div class="bento-card__body">
-          <p class="bento-card__num">B / GOEMONBURO</p>
+          <p class="bento-card__num">02 / GOEMONBURO</p>
           <h3 class="bento-card__title">
             <span class="lang-ja">専用 檜浴室</span>
             <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
@@ -1083,7 +1131,7 @@
       <div class="bento-card bento-card--c4 fade-up">
         <img class="bento-card__img" src="images/wanoma-9967.jpg" alt="梁に守られた寝室空間">
         <div class="bento-card__body">
-          <p class="bento-card__num">C / BEDROOM</p>
+          <p class="bento-card__num">03 / BEDROOM</p>
           <h3 class="bento-card__title">
             <span class="lang-ja">梁に守られて眠る</span>
             <span class="lang-en">Sleep Under Ancient Beams</span>
@@ -1101,7 +1149,7 @@
       <div class="bento-card bento-card--c4 fade-up">
         <img class="bento-card__img" src="images/wanoma-040.jpg" alt="こだわりの湯まわり">
         <div class="bento-card__body">
-          <p class="bento-card__num">D / BATH DETAILS</p>
+          <p class="bento-card__num">04 / BATH DETAILS</p>
           <h3 class="bento-card__title">
             <span class="lang-ja">こだわりの湯まわり</span>
             <span class="lang-en">Refined Bath Essentials</span>
@@ -1153,165 +1201,13 @@
 
 
 <!-- ===================================================
-     GALLERY（D: Desire）
-=================================================== -->
-<section class="gallery" id="gallery">
-  <div class="gallery__header">
-    <span class="section-label fade-up">GALLERY</span>
-    <h2 class="section-title fade-up">
-      <span class="lang-ja">和の間の景色</span>
-      <span class="lang-en">Moments in Wanoma</span>
-    </h2>
-    <p class="section-en fade-up">Moments in Wanoma</p>
-  </div>
-  <div class="gallery__track" id="galleryTrack">
-    <div class="gallery__item">
-      <img src="images/wanoma-001.jpg" alt="和の間 入口">
-      <p class="gallery__caption">
-        <span class="lang-ja">入口</span>
-        <span class="lang-en">Entrance</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-005.jpg" alt="和の間 室内">
-      <p class="gallery__caption">
-        <span class="lang-ja">室内全景</span>
-        <span class="lang-en">Interior</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-010.jpg" alt="丸太梁 全景">
-      <p class="gallery__caption">
-        <span class="lang-ja">丸太梁</span>
-        <span class="lang-en">Ancient Beams</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-9967.jpg" alt="天窓と寝室">
-      <p class="gallery__caption">
-        <span class="lang-ja">天窓と梁</span>
-        <span class="lang-en">Skylight &amp; Beams</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-022.jpg" alt="木組みの細部">
-      <p class="gallery__caption">
-        <span class="lang-ja">木組みの細部</span>
-        <span class="lang-en">Timber Details</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-9955.jpg" alt="寝室">
-      <p class="gallery__caption">
-        <span class="lang-ja">寝室</span>
-        <span class="lang-en">Bedroom</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-030.jpg" alt="檜浴室">
-      <p class="gallery__caption">
-        <span class="lang-ja">檜浴室</span>
-        <span class="lang-en">Hinoki Bath</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-9950.jpg" alt="行灯とガラス床展示">
-      <p class="gallery__caption">
-        <span class="lang-ja">行灯と梁</span>
-        <span class="lang-en">Andon &amp; Beams</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-040.jpg" alt="和紙ランプ">
-      <p class="gallery__caption">
-        <span class="lang-ja">和紙ランプ</span>
-        <span class="lang-en">Washi Lamp</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-9952.jpg" alt="ガラス床ディスプレイ">
-      <p class="gallery__caption">
-        <span class="lang-ja">ガラス床展示</span>
-        <span class="lang-en">Glass Floor Display</span>
-      </p>
-    </div>
-    <div class="gallery__item">
-      <img src="images/wanoma-9953.jpg" alt="寝室全景">
-      <p class="gallery__caption">
-        <span class="lang-ja">寝室全景</span>
-        <span class="lang-en">Bedroom Panorama</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===================================================
      EXPERIENCE（D: Desire）
 =================================================== -->
 <section class="experience" id="experience">
   <div class="container">
 
-    <!-- 浴室体験 -->
-    <div class="experience__grid fade-up">
-      <img class="experience__img" src="images/wanoma-030.jpg" alt="檜浴室体験">
-      <div class="experience__body">
-        <span class="section-label">GOEMONBURO EXPERIENCE</span>
-        <h2 class="section-title">
-          <span class="lang-ja">檜が香る、<br>静かな時間</span>
-          <span class="lang-en">A Quiet Moment, <br>Scented with Cypress</span>
-        </h2>
-        <div class="divider"></div>
-        <div class="lang-ja">
-          <p>
-            古くから日本人が愛してきた「檜」の香りは、心を落ち着かせ、疲れを癒す力があると言われています。和の間の専用浴室は、天然檜で仕上げた贅沢な空間。入浴するたびに立ち上る清々しい木の香りとともに、日々の疲れを溶かしてください。
-          </p>
-          <p>
-            旅の疲れを癒すのは、豪華な設備だけではありません。素材の持つ自然の力——それこそが侘び寂びの美学です。
-          </p>
-        </div>
-        <div class="lang-en">
-          <p>
-            Since ancient times, Japanese people have cherished the scent of cypress (Hinoki) for its power to calm the mind and heal fatigue. Our private bath, finished in natural Hinoki, offers a luxurious experience where the refreshing woody aroma will melt away your stress.
-          </p>
-          <p>
-            Healing isn't just about lavish amenities; it's about the natural power of materials—the very core of the wabi-sabi aesthetic.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 檜の湯まわり体験 -->
-    <div class="experience__grid experience__grid--reverse fade-up">
-      <img class="experience__img" src="images/wanoma-9950.jpg" alt="檜の洗面空間と五右衛門風呂">
-      <div class="experience__body">
-        <span class="section-label">EVENING RITUALS</span>
-        <h2 class="section-title">
-          <span class="lang-ja">檜に包まれた、<br>夜の支度</span>
-          <span class="lang-en">Evening Rituals <br>in Hinoki</span>
-        </h2>
-        <div class="divider"></div>
-        <div class="lang-ja">
-          <p>
-            天然檜の洗面から浴室へと続く空間は、入浴前のひとときから非日常を感じさせます。鋳鉄の浴槽を望みながら、湯あみの支度をする——旅の夜を彩る贅沢な時間です。
-          </p>
-          <p>
-            古民家の夜は静かです。その静寂の中で、檜の香りに包まれながら過ごす時間は、日常から遠く離れた場所へ連れていってくれます。
-          </p>
-        </div>
-        <div class="lang-en">
-          <p>
-            The Hinoki-clad space flows seamlessly from the vanity to the bathing area, setting a tone of luxury from the very first moment. Preparing for your bath while gazing at the cast-iron tub — this is the art of evening rituals.
-          </p>
-          <p>
-            Nights in an old folk house are remarkably still. Enveloped in the scent of cypress, these quiet moments transport you far beyond the reach of everyday life.
-          </p>
-        </div>
-      </div>
-    </div>
-
     <!-- Coffee Collab -->
-    <div class="coffee-collab fade-up" style="margin-top: 80px; padding: 56px 40px; border: 1px solid var(--border);">
+    <div class="coffee-collab fade-up" style="padding: 56px 40px; border: 1px solid var(--border);">
       <div class="coffee-collab__inner">
         <div class="coffee-collab__logo">
           <a href="https://maps.app.goo.gl/fcheVRccH4enn63JA" target="_blank" rel="noopener"><img src="images/align-coffee-logo.jpg" alt="Align Coffee Roaster ロゴ"></a>
@@ -1331,6 +1227,124 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ===================================================
+     AMENITIES（Memory）
+=================================================== -->
+<section class="amenities" id="amenities">
+  <div class="container">
+    <div class="amenities__block">
+      <span class="section-label fade-up">ROOM FACILITIES</span>
+      <h2 class="section-title fade-up">
+        <span class="lang-ja">部屋設備</span>
+        <span class="lang-en">Room Facilities</span>
+      </h2>
+      <div class="amenities__list fade-up">
+        <span class="amenities__item">Wi-Fi</span>
+        <span class="amenities__item">
+          <span class="lang-ja">テレビ</span>
+          <span class="lang-en">TV</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">エアコン</span>
+          <span class="lang-en">Air Conditioner</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">冷蔵庫</span>
+          <span class="lang-en">Refrigerator</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">湯沸かし器</span>
+          <span class="lang-en">Water Kettle</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">アイスペール</span>
+          <span class="lang-en">Ice Bucket</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">コーヒーカップ</span>
+          <span class="lang-en">Coffee Cups</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">グラス</span>
+          <span class="lang-en">Glasses</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">湯のみ</span>
+          <span class="lang-en">Japanese Tea Cups</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">スプーン</span>
+          <span class="lang-en">Spoons</span>
+        </span>
+        <span class="amenities__item">
+          <span class="lang-ja">ドライヤー</span>
+          <span class="lang-en">Hair Dryer</span>
+        </span>
+      </div>
+    </div>
+
+    <span class="section-label fade-up">AMENITIES</span>
+    <h2 class="section-title fade-up">
+      <span class="lang-ja">アメニティ</span>
+      <span class="lang-en">Amenities</span>
+    </h2>
+    <div class="amenities__list fade-up">
+      <span class="amenities__item">
+        <span class="lang-ja">シャンプー</span>
+        <span class="lang-en">Shampoo</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">コンディショナー</span>
+        <span class="lang-en">Conditioner</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">ボディソープ</span>
+        <span class="lang-en">Body Soap</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">バスタオル</span>
+        <span class="lang-en">Bath Towel</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">ハンドタオル</span>
+        <span class="lang-en">Hand Towel</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">歯磨きセット</span>
+        <span class="lang-en">Toothbrush Set</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">洗顔フォーム</span>
+        <span class="lang-en">Facial Cleansing Foam</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">クレンジング</span>
+        <span class="lang-en">Makeup Remover</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">化粧水</span>
+        <span class="lang-en">Lotion</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">乳液</span>
+        <span class="lang-en">Milky Lotion</span>
+      </span>
+      <span class="amenities__item">
+        <span class="lang-ja">耳栓</span>
+        <span class="lang-en">Earplugs</span>
+      </span>
+    </div>
+
+    <div class="amenities__cta fade-up">
+      <a href="https://reserve.489ban.net/client/wabisabi-himeji/0/plan/id/191130/stay" class="btn btn--primary btn--large">
+        <span class="lang-ja">公式サイトで空き確認・ご予約</span>
+        <span class="lang-en">Check Availability / Book Now</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1357,7 +1371,9 @@
 
     <div class="location__cards fade-up">
       <div class="location__card">
-        <span class="location__card__icon">🏯</span>
+        <span class="location__card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 43h32"/><path d="M11 43l2-8h22l2 8"/><path d="M16 35v-7h16v7"/><path d="M7 28c6 0 11-2 17-6 6 4 11 6 17 6"/><path d="M19 22v-6h10v6"/><path d="M12 16c5 0 9-1 12-5 3 4 7 5 12 5"/><path d="M21 11V8h6v3"/><path d="M18 8c2 0 4-1 6-4 2 3 4 4 6 4"/></svg>
+        </span>
         <h4 class="location__card__title">
           <span class="lang-ja">世界遺産 姫路城</span>
           <span class="lang-en">Himeji Castle</span>
@@ -1368,7 +1384,9 @@
         </p>
       </div>
       <div class="location__card">
-        <span class="location__card__icon">🚂</span>
+        <span class="location__card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="12" y="6" width="24" height="30" rx="6"/><path d="M16 12h16v11H16z"/><circle cx="18" cy="29" r="1.4"/><circle cx="30" cy="29" r="1.4"/><path d="M17 36l-4 6M31 36l4 6M9 42h30"/></svg>
+        </span>
         <h4 class="location__card__title">
           <span class="lang-ja">JR 姫路駅</span>
           <span class="lang-en">JR Himeji Station</span>
@@ -1379,7 +1397,9 @@
         </p>
       </div>
       <div class="location__card">
-        <span class="location__card__icon">🏮</span>
+        <span class="location__card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M20 5h8v4h-8z"/><path d="M24 9c-7 0-11 4-11 13s4 13 11 13 11-4 11-13S31 9 24 9z"/><path d="M14.5 17c6 2 13 2 19 0M13.5 26c7 2.500 14 2.500 21 0"/><path d="M20 35h8v3h-8z"/><path d="M24 38v6"/></svg>
+        </span>
         <h4 class="location__card__title">
           <span class="lang-ja">城下町エリア</span>
           <span class="lang-en">Castle Town Area</span>
@@ -1389,6 +1409,21 @@
           <span class="lang-en">Dining &amp; Shopping<br>Perfect for strolling</span>
         </p>
       </div>
+    </div>
+
+    <div class="location__map fade-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1337.6018442069444!2d134.6998237262604!3d34.84133607891871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355520002837b71f%3A0xb85ed0f02cfd0d54!2z44CSNjcwLTAwMDgg5YW15bqr55yM5aer6Lev5biC5qmL5LmL55S677yS77yU!5e0!3m2!1sja!2sjp!4v1724580715251!5m2!1sja!2sjp"
+        title="侘寂の地図 / Map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+      <p class="location__map-link">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%85%B5%E5%BA%AB%E7%9C%8C%E5%A7%AB%E8%B7%AF%E5%B8%82%E6%A9%8B%E4%B9%8B%E7%94%BA22" target="_blank" rel="noopener">
+          <span class="lang-ja">Googleマップで開く</span>
+          <span class="lang-en">Open in Google Maps</span>
+        </a>
+      </p>
     </div>
   </div>
 </section>
@@ -1431,55 +1466,6 @@
 
 
 <!-- ===================================================
-     AMENITIES（Memory）
-=================================================== -->
-<section class="amenities" id="amenities">
-  <div class="container">
-    <span class="section-label fade-up">AMENITIES</span>
-    <h2 class="section-title fade-up">
-      <span class="lang-ja">含まれるアメニティ</span>
-      <span class="lang-en">Amenities</span>
-    </h2>
-    <div class="amenities__list fade-up">
-      <span class="amenities__item">
-        <span class="lang-ja">専用 檜浴室（バスタブ付）</span>
-        <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">Align Coffee Roaster ドリップコーヒー</span>
-        <span class="lang-en">Align Coffee Drip Bag</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">日本茶・抹茶パック</span>
-        <span class="lang-en">Green Tea &amp; Matcha</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">クッキー</span>
-        <span class="lang-en">Cookies</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">バスタオル・フェイスタオル</span>
-        <span class="lang-en">Towels</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">浴衣・スリッパ</span>
-        <span class="lang-en">Yukata &amp; Slippers</span>
-      </span>
-      <span class="amenities__item">
-        <span class="lang-ja">ドライヤー</span>
-        <span class="lang-en">Hair Dryer</span>
-      </span>
-      <span class="amenities__item">Wi-Fi</span>
-      <span class="amenities__item">
-        <span class="lang-ja">1階東 赤い襖絵の客室</span>
-        <span class="lang-en">1st Floor East, Red Fusuma Room</span>
-      </span>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===================================================
      PRICING（M → A）
 =================================================== -->
 <section class="pricing" id="pricing">
@@ -1495,46 +1481,13 @@
       <p class="pricing__price">¥37,400 〜</p>
       <p class="pricing__note lang-ja">1室あたり / 1泊 素泊まり（2名様利用）</p>
       <p class="pricing__note lang-en">Per room / 1 night, room only (for 2 guests)</p>
-
-      <ul class="pricing__list">
-        <li>
-          <span class="lang-ja">和の間（1階特別室）専用空間</span>
-          <span class="lang-en">Wanoma Private Room (1F)</span>
-        </li>
-        <li>
-          <span class="lang-ja">専用 五右衛門風呂（檜浴室）</span>
-          <span class="lang-en">Private Goemonburo (Hinoki Bath)</span>
-        </li>
-        <li>
-          <span class="lang-ja">Align Coffee Roaster ドリップコーヒー</span>
-          <span class="lang-en">Align Coffee Drip Bag</span>
-        </li>
-        <li>
-          <span class="lang-ja">日本茶・抹茶パック・クッキー</span>
-          <span class="lang-en">Green Tea &amp; Cookies</span>
-        </li>
-        <li>
-          <span class="lang-ja">アメニティ一式（浴衣・タオル等）</span>
-          <span class="lang-en">Full Set of Amenities</span>
-        </li>
-        <li>
-          <span class="lang-ja">姫路城下町 古民家体験</span>
-          <span class="lang-en">Historic Machiya Experience</span>
-        </li>
-      </ul>
+      <p class="pricing__times lang-ja">チェックイン／15：00～19：00（セルフチェックイン）<br>チェックアウト／11：00</p>
+      <p class="pricing__times lang-en">Check-in: 15:00–19:00 (self check-in)<br>Check-out: 11:00</p>
 
       <a href="https://reserve.489ban.net/client/wabisabi-himeji/0/plan/id/191130/stay" class="btn btn--primary" style="width: 100%; margin-bottom: 12px;">
         <span class="lang-ja">公式サイトで空き確認・ご予約</span>
         <span class="lang-en">Check Availability / Book Now</span>
       </a>
-
-      <p class="pricing__ota">
-        <span class="lang-ja">各OTAからも予約可能：</span>
-        <span class="lang-en">Also available on:</span>
-        <a href="https://travel.rakuten.co.jp/HOTEL/167556/" target="_blank">Rakuten</a> /
-        <a href="https://www.jalan.net/yad368484/" target="_blank">Jalan</a> /
-        <a href="https://www.booking.com/" target="_blank">Booking.com</a>
-      </p>
     </div>
   </div>
 </section>
@@ -1558,10 +1511,8 @@
         <span class="lang-ja">公式サイトで予約する</span>
         <span class="lang-en">Book via Official Website</span>
       </a>
-      <a href="mailto:info@wabisabi-himeji.jp" class="btn btn--outline btn--large">
-        <span class="lang-ja">お問い合わせ</span>
-        <span class="lang-en">Inquiry</span>
-      </a>
+      <a href="https://wabisabi-himeji.jp/contact/" class="btn btn--outline btn--large lang-ja">お問い合わせ</a>
+      <a href="https://wabisabi-himeji.jp/en/contact/" class="btn btn--outline btn--large lang-en">Inquiry</a>
     </div>
     <p style="margin-top: 28px; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em;" class="fade-up">
       <span class="lang-ja">公式サイト：</span>
@@ -1582,25 +1533,9 @@
         <img src="images/logo.png" alt="Wabi-Sabi">
         <div class="site-footer__logo-text">
           <strong>侘 寂</strong>
-          <span class="lang-ja">姫路城下町古民家旅館<br>〒670-0012 兵庫県姫路市</span>
-          <span class="lang-en">Castle Town Machiya Inn<br>Himeji, Hyogo, Japan</span>
+          <span class="lang-ja">姫路城下町古民家旅館<br>〒670-0008 兵庫県姫路市橋之町22</span>
+          <span class="lang-en">Castle Town Machiya Inn<br>22, Hashino-cho, Himeji, Hyogo 670-0008, Japan</span>
         </div>
-      </div>
-      <div class="site-footer__links">
-        <a href="https://wabisabi-himeji.jp">
-          <span class="lang-ja">公式サイト</span>
-          <span class="lang-en">Official Website</span>
-        </a>
-        <a href="https://www.instagram.com/wabisabi.himeji/" target="_blank">Instagram</a>
-        <a href="https://travel.rakuten.co.jp/HOTEL/167556/" target="_blank">
-          <span class="lang-ja">楽天トラベル</span>
-          <span class="lang-en">Rakuten Travel</span>
-        </a>
-        <a href="https://www.jalan.net/yad368484/" target="_blank">
-          <span class="lang-ja">じゃらん</span>
-          <span class="lang-en">Jalan</span>
-        </a>
-        <a href="https://www.booking.com/" target="_blank">Booking.com</a>
       </div>
     </div>
     <p class="site-footer__copy">
